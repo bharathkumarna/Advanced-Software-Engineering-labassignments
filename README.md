@@ -1,4 +1,4 @@
 # ase_labassignments
 
 Advanced Software Engineering Lab Assignments
-Lab 1- https://github.com/bharathkumarna/ase_labassignments.wiki.git
+Lab 1- https://github.com/bharathkumarna/ase_labassignments/wiki/Lab-1
