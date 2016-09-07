@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <h1>Directions and Weather</h1>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&v=3.exp&sensor=true">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.1/angular.min.js" type="application/javascript"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="jquery-3.1.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
+    <br>
+    <div class="form-group"> <label for="starting">Start:</label>
+        <input type="text" class="form-control" id="starting">
+    </div>
+
+
+    <div class="form-group"> <label for="ending">End:</label>
+        <input type="text" class="form-control" id="ending">
+    </div>
+
+    <button id="btn" onclick="loc();" href="javascript:;">Submit</button><br><br>
+
+    <div style="width: 1000px;">
+        <div id="map" style="width: 545px; height: 350px; float: left;"></div>
+    </div>
+
+</head>
+
+
+
+<body>
+
+<script>
+    var input = document.getElementById("starting");
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    var input = document.getElementById("ending");
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var map = new google.maps.Map(document.getElementById("map"));
+    directionsDisplay.setMap(map);
+function loc() {
+    //function initialize() {
+        var start = document.getElementById("starting").value;
+    //var autocomplete = new google.maps.places.Autocomplete(start);}
+    var end = document.getElementById("ending").value;
+    //google.maps.event.addDomListener(window, 'load', initialize);
+    var request = {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+    directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        }
+    });
+}
+
+    var mainWeather = {
+        init: function() {
+            $("#btn").click(function() {
+                return mainWeather.getWeather();
+
+            });
+        },
+
+        getWeather: function() {
+            $.get("http://api.openweathermap.org/data/2.5/weather?q="+$("#starting").val()+"&APPID=c2c2e235bc19a1d96579c284ffc0e809", function(data) {
+                var json = {
+                    json: JSON.stringify(data),
+                    delay: 1
+                };
+
+                var div = document.createElement("div");
+                div.innerHTML = "&nbsp&nbsp Start Point weather:<br>&nbsp&nbsp "+data.name+","+data.sys.country+"&nbsp &nbsp Currently&nbsp" + (1.8*(data.main.temp - 273)+ 32).toFixed(2) + "°F&nbspand&nbsp"+ data.weather[0].description + "&nbsp &nbsp";
+
+
+                document.body.appendChild(div);
+
+
+            })
+
+            ;
+
+            $.get("http://api.openweathermap.org/data/2.5/weather?q="+$("#ending").val()+"&APPID=c2c2e235bc19a1d96579c284ffc0e809", function(data) {
+                var json = {
+                    json: JSON.stringify(data),
+                    delay: 1
+                };
+
+                var div = document.createElement("div");
+                div.innerHTML = "<br><br>&nbsp&nbsp End Point weather:<br>&nbsp&nbsp "+data.name+","+data.sys.country+"&nbsp &nbsp Currently&nbsp" + (1.8*(data.main.temp - 273)+ 32).toFixed(2) + "°F&nbspand&nbsp "+ data.weather[0].description + "&nbsp &nbsp";
+
+                //var icon = data.weather[0].icon;
+                document.body.appendChild(div);
+            });
+        },
+
+
+
+
+
+    }
+
+    mainWeather.init();
+</script>
+
+</body>
+</html>
