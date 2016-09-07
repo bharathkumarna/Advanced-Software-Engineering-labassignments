@@ -55,11 +55,9 @@
     var map = new google.maps.Map(document.getElementById("map"));
     directionsDisplay.setMap(map);
 function loc() {
-    //function initialize() {
         var start = document.getElementById("starting").value;
-    //var autocomplete = new google.maps.places.Autocomplete(start);}
     var end = document.getElementById("ending").value;
-    //google.maps.event.addDomListener(window, 'load', initialize);
+    
     var request = {
         origin: start,
         destination: end,
@@ -106,8 +104,6 @@ function loc() {
 
                 var div = document.createElement("div");
                 div.innerHTML = "<br><br>&nbsp&nbsp End Point weather:<br>&nbsp&nbsp "+data.name+","+data.sys.country+"&nbsp &nbsp Currently&nbsp" + (1.8*(data.main.temp - 273)+ 32).toFixed(2) + "°F&nbspand&nbsp "+ data.weather[0].description + "&nbsp &nbsp";
-
-                //var icon = data.weather[0].icon;
                 document.body.appendChild(div);
             });
         },
