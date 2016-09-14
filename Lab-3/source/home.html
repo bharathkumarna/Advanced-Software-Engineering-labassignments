@@ -1,0 +1,93 @@
+<! doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <script      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
+
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="home.css">
+
+    <form>
+        <br>
+        <div class="form-group"> <label for="movie">Enter Movie Name:</label>
+            <input type="text" class="form-control" id="movie" />
+        </div>
+
+        <button id="btn" onclick="p_oEvent();" href="javascript:;">Submit</button><br>
+    </form>
+
+    <div id="container">
+
+       <b> &nbsp;Movie Name:</b><p class="title">Title</p>
+        <b>&nbsp;Plot:</b><p class="plot">Plot</p>
+        <span class="poster">Poster</span>
+        <b>&nbsp;Released:</b><p class="released">Year</p>
+        <b>&nbsp;Actors:</b><p class="actors">Actors</p>
+        <b>&nbsp;Writer:</b><p class="writer">Writer</p>
+        <b>&nbsp;Language:</b><p class="language">Language</p>
+        <b>&nbsp;IMDb Rating :</b><p class="imdbRating">imdbRating</p><br>
+        <b>&nbsp;Sentiment Analysis using Alchemy API<br><br>&nbsp;Movie Review :</b><p class="tomatoConsensus">tomatoConsensus</p>
+        </div>
+
+    <script type="text/javascript">
+        var review,score;
+        var $Form = $('form'), $Container = $('#container');
+        $Container.hide();
+        $Form.on('submit', function(p_oEvent){
+            var url,movie, data;
+            p_oEvent.preventDefault();
+            movie = $Form.find('input').val();
+            url = 'https://www.omdbapi.com/?t=' + movie + '&type=movie&tomatoes=true&plot=full'
+            $.ajax(url, {
+                complete: function(sample){
+                    data = $.parseJSON(sample.responseText);
+                    console.log(data);
+                    $Container.find('.title').text(data.Title);
+                    $Container.find('.plot').text(data.Plot);
+                    $Container.find('.poster').html('<img src="' + data.Poster + '"/>');
+                    $Container.find('.released').text(data.Released);
+                    $Container.find('.actors').text(data.Actors);
+                    $Container.find('.writer').text(data.Writer);
+                    $Container.find('.language').text(data.Language);
+                    $Container.find('.imdbRating').text(data.imdbRating);
+                    $Container.find('.tomatoConsensus').text(data.tomatoConsensus);
+                    //alert(text(data.imdbRating));
+                    $Container.show();
+
+                }
+            });
+        });
+        var $Form = $('form');
+
+        $Form.on('submit', function(p_oEvent){
+            var url,movie, datas;
+            p_oEvent.preventDefault();
+            movie = $Form.find('input').val();
+            url = 'http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey=d0e7bf68cdda677938e6c186eaf2b755ef737cd8&outputMode=json&text='+movie+' movie';
+            $.ajax(url, {
+                complete: function(sample){
+                    datas = $.parseJSON(sample.responseText);
+                    console.log(datas);
+
+                    var div = document.createElement("div");
+                    div.innerHTML = "<b>&nbsp;Sentiment of the review: </b>"+datas.docSentiment.type+"<b><br>&nbsp;Sentiment Score of the review:</b> "+datas.docSentiment.score+"";
+                    //document.write(review);
+                    document.getElementById("container").appendChild(div);
+
+
+
+                }
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+<footer>
+    <button type="button" class="btn btn-default"onclick="location.href='login.html'">Go Back</button>
+</footer>
+</body>
+</html>

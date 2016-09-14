@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="register.css">
+    <h1> Register </h1>
+
+</head>
+<body>
+
+<form>
+
+    <div class="form-group"> <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
+    <div>
+    <input type="radio" name="gender" value="male" checked> Male
+    <input type="radio" name="gender" value="female"> Female<br>
+        </div>
+    <div class="form-group">
+        <label for="date">Date of Birth:</label>
+        <input type="date" class="form-control" id="date">
+    </div>
+
+
+    <button type="button" class="btn btn-default"onclick="location.href='home.html'">Sign up</button>
+    <button type="reset" class="btn btn-default"> Reset</button>
+</form>
+<footer>
+    <button type="button" class="btn btn-default"onclick="location.href='login.html'">Go Back</button>
+</footer>
+</body>
+
+</html>

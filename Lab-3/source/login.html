@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment-2</title>
+    <meta name="google-signin-client_id" content="938451168278-6jq8r30mrhrb782skpqaj76nalbkpvcu.apps.googleusercontent.com">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css">
+<h1>
+    <button type="button" class="btn btn-lg btn-info-outline" onclick="login()">Login</button>
+
+    <button type="button" class="btn btn-lg btn-info-outline" onclick="location.href='register.html'">Register</button>
+
+</h1>
+
+    <meta name="google-signin-client_id" content="938451168278-6jq8r30mrhrb782skpqaj76nalbkpvcu.apps.googleusercontent.com">
+    <script src="jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+    <script>
+        function onSuccess(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            gapi.client.load('plus', 'v1', function () {
+                var request = gapi.client.plus.people.get({
+                    'userId': 'me'
+                });
+
+                window.location='home.html';
+            });
+        }
+        function onFailure(error) {
+            alert(error);
+        }
+        function renderButton() {
+            gapi.signin2.render('gSignIn', {
+                'scope': 'profile email',
+                'width': 450,
+                'height': 33,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+<form>
+    <div class="form-group"> <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd"><br>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="button" class="btn btn-default" onclick="location.href='home.html'">Sign In</button>
+</form>
+<div id="gSignIn"></div>
+<div class="userContent"></div>
+
+
+</body>
+</html>
