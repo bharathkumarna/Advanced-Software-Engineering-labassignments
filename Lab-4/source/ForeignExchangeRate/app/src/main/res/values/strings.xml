@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Foreign Exchange Rate</string>
+    <string name="select_country1">From Currency:</string>
+    <string-array name="country_names">
+        <item></item>
+        <item>AUD (Australian Dollar)</item>
+        <item>CAD (Canadian Dollar)</item>
+        <item>CHF (Swiss Franc)</item>
+        <item>EUR (Euro)</item>
+        <item>GBP (British Pound)</item>
+        <item>JPY (Japnese Yen)</item>
+        <item>NZD (New Zealand Dollar)</item>
+        <item>KHR (Khmer Riel)</item>
+        <item>USD (American Dollar)</item>
+        <item>CNY (Chinese Yuan Renminbi)</item>
+        <item>THB (Thai Baht)</item>
+        <item>INR (Indian Rupee)</item>
+    </string-array>
+    <string-array name="value">
+        <item></item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>NZD</item>
+        <item>KHR</item>
+        <item>USD</item>
+        <item>CNY</item>
+        <item>THB</item>
+        <item>INR</item>
+    </string-array>
+    <string name="select_country2">To Currency:</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

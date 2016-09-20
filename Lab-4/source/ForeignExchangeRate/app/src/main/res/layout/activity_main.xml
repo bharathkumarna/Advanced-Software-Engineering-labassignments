@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.bn4n5.foreignexchangerate.MainActivity"
+
+    >
+
+    <TextView
+        android:text="@string/select_country1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="#1302ff"
+        android:layout_marginTop="4dp"
+        android:textSize="18sp"
+        android:id="@+id/select1"
+         />
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/select1"
+        android:layout_marginTop="4dp"
+        />
+    <TextView
+        android:text="@string/select_country2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="40dp"
+        android:textColor="#1302ff"
+        android:textSize="18sp"
+        android:id="@+id/select2"
+        />
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/select2"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exchange Rate"
+        android:id="@+id/exchangebt"
+        android:layout_marginTop="76dp"
+        android:textColor="#1302ff"
+        android:textAlignment="center"
+        android:onClick="exchange"
+
+        android:layout_below="@+id/select2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/result"
+        android:layout_marginTop="109dp"
+        android:textAlignment="center"
+        android:textColor="#1302ff"
+        android:layout_below="@+id/exchangebt"
+        android:layout_toEndOf="@+id/select2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/btn_Logout"
+        android:onClick="logout"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:textColor="#d92b2b" />
+
+
+</RelativeLayout>
