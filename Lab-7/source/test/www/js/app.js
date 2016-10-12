@@ -3,8 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var exampleApp=angular.module('starter', ['ionic'])
-
+var exampleApp=angular.module('starter', ['ionic','ngCordova'])
+var test=angular.module('start', ['ionic'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -24,7 +24,8 @@ var exampleApp=angular.module('starter', ['ionic'])
 })
 //Refrence: https://github.com/cfjedimaster/Cordova-Examples/tree/master/barcode
 var resultDiv;
-var upc,id,review;
+var upc,id,review,url;
+
 document.addEventListener("deviceready", init, false);
 function init() {
 	document.querySelector("#startScan").addEventListener("touchend", startScan, false);
@@ -46,42 +47,34 @@ function startScan() {
 	);
 
 }
-/*function auth()
-{
-   var login=document.getElementById('login');
- var password=document.getElementById('password');
-    if(login=="admin"&&password="admin")
-        {
-            window.location="home.html";
-        }
-    else 
-        alert("username and password incorrect")
-}
-*/
-exampleApp.controller('ExampleController', function($scope, $http) {
+
+exampleApp.controller('ExampleController', function($scope, $http, $cordovaInAppBrowser) {
  
     $scope.getData = function() {
         $http.get("http://api.walmartlabs.com/v1/items?apiKey=9gnk426wzsb972r7xmumfaxr&upc="+upc+"&format=json")
             .success(function(data) {
             
                 $scope.name = data.items[0].name;
-            $scope.price = data.items[0].itemId;
+            $scope.price = data.items[0].salePrice;
             id=data.items[0].itemId;
+            url=data.items[0].productUrl;
             
             })
             .error(function(data) {
                 //alert("ERROR");
-            });
-         $http.get("http://api.walmartlabs.com/v1/reviews/"+id+"?apiKey=9gnk426wzsb972r7xmumfaxr&format=json")
+            })
+        $http.get("http://api.walmartlabs.com/v1/reviews/"+id+"?apiKey=9gnk426wzsb972r7xmumfaxr&format=json")
             .success(function(data) {
-            $scope.review=data.reviews[0].reviewText;
-             review=data.reviews[0].reviewText
+            $scope.review=data.reviews[1].reviewText;
+             review=data.reviews[1].reviewText
             
             })
             .error(function(data) {
                // alert("ERROR");
             });
+        
     }
+   
     $scope.analysis = function() {
         $http.get("https://api.uclassify.com/v1/uclassify/sentiment/Classify?readkey=Zg3MvbzfpWBc&text="+review)
             .success(function(data) {
@@ -95,5 +88,23 @@ exampleApp.controller('ExampleController', function($scope, $http) {
                 alert("ERROR");
             });
     }
- 
+    var options = {
+      location: 'yes',
+      clearcache: 'yes',
+      toolbar: 'no'
+   };
+
+   $scope.openBrowser = function() {
+      $cordovaInAppBrowser.open(url, '_blank', options)
+		
+      .then(function(event) {
+         // success
+      })
+		
+      .catch(function(event) {
+         // error
+      });
+   }
+
 });
+
