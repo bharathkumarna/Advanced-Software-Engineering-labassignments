@@ -13,3 +13,5 @@ Lab 4- https://github.com/bharathkumarna/ase_labassignments/wiki/Lab-4
 Lab 5- https://github.com/bharathkumarna/ase_labassignments/wiki/Lab-5
 
 Lab 6- https://github.com/bharathkumarna/ase_labassignments/wiki/Lab-6
+
+Lab 7- https://github.com/bharathkumarna/ase_labassignments/wiki/Lab-7
