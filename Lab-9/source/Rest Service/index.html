@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Live Gold <Prices></Prices>er Prices</title>
+    <div class="container">
+        <div class="bg-primary" style="text-align: center;font-family: Arial"><h1>Live Gold Prices|Silver Prices</h1></div>
+    </div>
+    <script src="app.js"></script>
+
+</head>
+<body ng-app=calculate>
+
+<div ng-controller=calculatectrl>
+    <form>
+        <div class="form-group"> <label for="currency"></label>
+            <input type="text" class="form-control" placeholder="Enter Currency" id="currency" ng-model="c">
+        </div>
+        <br>
+        <div class="form-group"> <label for="amount"></label>
+            <input type="number" class="form-control" placeholder="Enter amount" id="amount" ng-model="a">
+        </div>
+        <br><br>
+
+<div class="centered">
+        <button class="btn btn-success" ng-click="price()">Get Price</button>
+    </div>
+        </form>
+
+
+    <div class="container">
+        <p ng-model="rate">
+            <br><br>
+
+        <div class="bg-danger">Gold Rate&nbsp&nbsp&nbsp: {{rate.cost}} {{rate.code}} = {{rate.gold}}&nbsp&nbspXAU-Gold Ounce </div><br>
+        <div class="bg-success">Silver Rate&nbsp: {{rate.cost}} {{rate.code}} = {{rate.silver}}&nbsp&nbspXAG-Silver Ounce</div><br>
+
+
+
+        </p>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>
