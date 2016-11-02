@@ -1,0 +1,92 @@
+.btn{
+    width: 15%;
+
+}
+.centered
+{
+    text-align: center;
+}
+.buttons
+{
+    text-align: center;
+    padding-top: 5%;
+}
+
+body{
+    background-image:url("img/bg.jpg");
+    background-size: auto;
+}
+.form1{
+    padding-left:5%;
+    padding-right: 10%;
+    padding-top: 5%;
+    color: #204d74;
+    font-size: medium;
+width: 50%;
+    float: left;
+
+}
+input[type=submit] {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-family: "Comic Sans MS";
+}
+.form2{
+    padding-left:10%;
+    padding-right: 5%;
+    padding-top: 5%;
+    color: #204d74;
+    font-size: medium;
+    float: right;
+    width: 50%;
+}
+.c1{
+
+    table-layout: fixed;
+    padding-left:23%;
+    padding-right: 60%;
+    text-align: center;
+    display: inline-block;
+    color: #204d74;
+    font-size: 13px;
+    margin: 4px 8px;
+    cursor: pointer;
+}
+
+table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+}
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+.form3{
+    padding-left:10%;
+    padding-right: 5%;
+    padding-top: 5%;
+    color: #761c19;
+    font-size: medium;
+    float: right;
+width: 50%;
+
+
+}
+.form4{
+    padding-left:5%;
+    padding-right: 10%;
+    padding-top: 5%;
+    color: #761c19;
+    font-size: medium;
+    float: left;
+    width: 50%;
+
+
+}

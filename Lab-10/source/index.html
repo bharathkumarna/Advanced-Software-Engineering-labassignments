@@ -1,0 +1,71 @@
+<html >
+<head >
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
+    <title>Registration</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="node.js"></script>
+    <script>
+        function register() {
+            document.getElementById("register").style.visibility="visible";
+            document.getElementById("login").style.visibility="hidden";
+        }
+        function login() {
+            document.getElementById("login").style.visibility="visible";
+            document.getElementById("register").style.visibility="hidden";
+        }
+    </script>
+</head>
+<body ng-app=demo>
+<div ng-controller=MongoController>
+    <div class="buttons">
+        <button class="btn btn-lg btn-success" onclick="login()">Login</button>
+        <button class="btn btn-lg btn-success" onclick="register()">Register</button>
+
+    </div>
+    </form>
+    <form class="form4" id="login" style="visibility: hidden">
+        <div class="form-group"> <label for="Email"></label>
+            <input type="email"class="form-control" placeholder="Email">
+        </div>
+        <br>
+        <div class="form-group"> <label for="Password"></label>
+            <input type="password"class="form-control" placeholder="Password">
+        </div>
+        <br>
+        <div class="centered">
+            <button class="btn btn-lg btn-success" ng-click="login()" onclick="location.href='home.html'">Sign in</button>
+        </div>
+    </form>
+<form class="form3" id="register" style="visibility: hidden">
+    <div class="form-group"> <label for="FirstName"></label>
+        <input type="text" class="form-control" placeholder="First Name" id="FirstName" ng-model="form1.FirstName">
+    </div>
+    <br>
+    <div class="form-group"> <label for="Lastname"></label>
+        <input type="text" class="form-control" placeholder="Last Name" id="LastName" ng-model="form1.LastName">
+    </div>
+    <br>
+    <div class="form-group"> <label for="Password"></label>
+        <input type="password"class="form-control" placeholder="Password" id="Password" ng-model="form1.Password">
+    </div>
+    <br>
+    <div class="form-group"> <label for="Email"></label>
+        <input type="email"class="form-control" placeholder="Email" id="Email" ng-model="form1.Email">
+    </div>
+    <br>
+    <div class="form-group"> <label for="Phone"></label>
+        <input type="tel"class="form-control" placeholder="Contact" id="Phone" ng-model="form1.Phone">
+    </div>
+    <br>
+    <div class="centered">
+        <button class="btn btn-lg btn-success" ng-click="insert()">Sign up</button>
+    </div>
+</form>
+
+</div>
+
+
+</body>
+</html>
